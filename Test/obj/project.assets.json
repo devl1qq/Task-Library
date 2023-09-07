@@ -14,6 +14,19 @@
             "related": ".xml"
           }
         }
+      },
+      "Task Library/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3"
+        },
+        "compile": {
+          "bin/placeholder/Task Library.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Task Library.dll": {}
+        }
       }
     }
   },
@@ -47,11 +60,16 @@
         "newtonsoft.json.nuspec",
         "packageIcon.png"
       ]
+    },
+    "Task Library/1.0.0": {
+      "type": "project",
+      "path": "../Task Library/Task Library.csproj",
+      "msbuildProject": "../Task Library/Task Library.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "Newtonsoft.Json >= 13.0.3"
+      "Task Library >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -60,11 +78,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ivan\\OneDrive\\Рабочий стол\\Folders\\Tasks\\Task-Library\\Task Library\\Task Library.csproj",
-      "projectName": "Task Library",
-      "projectPath": "C:\\Users\\Ivan\\OneDrive\\Рабочий стол\\Folders\\Tasks\\Task-Library\\Task Library\\Task Library.csproj",
+      "projectUniqueName": "C:\\Users\\Ivan\\OneDrive\\Рабочий стол\\Folders\\Tasks\\Task-Library\\Test\\Test.csproj",
+      "projectName": "Test",
+      "projectPath": "C:\\Users\\Ivan\\OneDrive\\Рабочий стол\\Folders\\Tasks\\Task-Library\\Test\\Test.csproj",
       "packagesPath": "C:\\Users\\Ivan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ivan\\OneDrive\\Рабочий стол\\Folders\\Tasks\\Task-Library\\Task Library\\obj\\",
+      "outputPath": "C:\\Users\\Ivan\\OneDrive\\Рабочий стол\\Folders\\Tasks\\Task-Library\\Test\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Ivan\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -80,7 +98,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Ivan\\OneDrive\\Рабочий стол\\Folders\\Tasks\\Task-Library\\Task Library\\Task Library.csproj": {
+              "projectPath": "C:\\Users\\Ivan\\OneDrive\\Рабочий стол\\Folders\\Tasks\\Task-Library\\Task Library\\Task Library.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -92,12 +114,6 @@
     "frameworks": {
       "net6.0": {
         "targetAlias": "net6.0",
-        "dependencies": {
-          "Newtonsoft.Json": {
-            "target": "Package",
-            "version": "[13.0.3, )"
-          }
-        },
         "imports": [
           "net461",
           "net462",

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Ivan\\OneDrive\\Рабочий стол\\Folders\\Tasks\\Task Library\\Task Library.csproj": {}
+    "C:\\Users\\Ivan\\OneDrive\\Рабочий стол\\Folders\\Tasks\\Task-Library\\Task Library\\Task Library.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Ivan\\OneDrive\\Рабочий стол\\Folders\\Tasks\\Task Library\\Task Library.csproj": {
+    "C:\\Users\\Ivan\\OneDrive\\Рабочий стол\\Folders\\Tasks\\Task-Library\\Task Library\\Task Library.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ivan\\OneDrive\\Рабочий стол\\Folders\\Tasks\\Task Library\\Task Library.csproj",
+        "projectUniqueName": "C:\\Users\\Ivan\\OneDrive\\Рабочий стол\\Folders\\Tasks\\Task-Library\\Task Library\\Task Library.csproj",
         "projectName": "Task Library",
-        "projectPath": "C:\\Users\\Ivan\\OneDrive\\Рабочий стол\\Folders\\Tasks\\Task Library\\Task Library.csproj",
+        "projectPath": "C:\\Users\\Ivan\\OneDrive\\Рабочий стол\\Folders\\Tasks\\Task-Library\\Task Library\\Task Library.csproj",
         "packagesPath": "C:\\Users\\Ivan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ivan\\OneDrive\\Рабочий стол\\Folders\\Tasks\\Task Library\\obj\\",
+        "outputPath": "C:\\Users\\Ivan\\OneDrive\\Рабочий стол\\Folders\\Tasks\\Task-Library\\Task Library\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Ivan\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,6 +39,12 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
