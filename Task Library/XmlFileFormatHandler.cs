@@ -32,7 +32,7 @@ namespace Task_Library
                     if (string.IsNullOrWhiteSpace(dateStr) || string.IsNullOrWhiteSpace(brandName) || string.IsNullOrWhiteSpace(priceStr))
                     {
                         throw new InvalidOperationException("Invalid XML format - missing or empty elements.");
-                    }
+                    }                 
 
                     records.Add(new CarRecord
                     {
