@@ -14,26 +14,37 @@ namespace Task_Library
 
             try
             {
-                if (File.Exists(filePath))
+                if (!File.Exists(filePath))
                 {
-                    string jsonContent = File.ReadAllText(filePath);
-
-                    var settings = new JsonSerializerSettings
-                    {
-                        DateFormatString = "dd.MM.yyyy",
-                    };
-
-                    var carRecords = JsonConvert.DeserializeObject<List<CarRecord>>(jsonContent, settings);
-
-                    foreach (var carRecord in carRecords)
-                    {
-                        records.Add(carRecord);
-                    }
+                    throw new FileNotFoundException("JSON file does not exist.", filePath);
                 }
-                else
+
+                string jsonContent = File.ReadAllText(filePath);
+
+                var settings = new JsonSerializerSettings
                 {
-                    Console.WriteLine("JSON file does not exist.");
+                    DateFormatString = "dd.MM.yyyy",
+                };
+
+                var carRecords = JsonConvert.DeserializeObject<List<CarRecord>>(jsonContent, settings);
+
+                foreach (var carRecord in carRecords)
+                {
+                    records.Add(new CarRecord
+                    {
+                        Date = carRecord.Date,
+                        BrandName = carRecord.BrandName,
+                        Price = carRecord.Price
+                    });
                 }
+            }
+            catch (FileNotFoundException ex)
+            {
+                Console.WriteLine("Error reading JSON file: " + ex.Message);
+            }
+            catch (JsonReaderException ex)
+            {
+                Console.WriteLine("Error reading JSON file - Invalid JSON format: " + ex.Message);
             }
             catch (Exception ex)
             {

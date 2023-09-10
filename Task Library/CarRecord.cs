@@ -18,7 +18,7 @@ namespace Task_Library
                 }
                 else
                 {
-                    throw new ArgumentException("Invalid date format.");
+                    throw new InvalidDateFormatException("Invalid date format.");
                 }
             }
         }
@@ -47,7 +47,7 @@ namespace Task_Library
                 }
                 else
                 {
-                    throw new ArgumentException("Invalid price format or value.");
+                    throw new InvalidPriceFormatException("Invalid price format or value.");
                 }
             }
         }

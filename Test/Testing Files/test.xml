@@ -8,13 +8,10 @@
   <Car>
     <Date>15.05.2010</Date>
     <BrandName></BrandName>
-    <!-- Invalid: Empty BrandName -->
     <Price>-45000</Price>
-    <!-- Invalid: Negative Price -->
   </Car>
   <Car>
     <Date>31.02.2022</Date>
-    <!-- Invalid: Invalid date (February 31) -->
     <BrandName>Ford Mustang</BrandName>
     <Price>55000</Price>
   </Car>

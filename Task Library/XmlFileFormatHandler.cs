@@ -13,31 +13,42 @@ namespace Task_Library
 
             try
             {
-                if (File.Exists(filePath))
+                if (!File.Exists(filePath))
                 {
-                    XmlDocument xmlDoc = new XmlDocument();
-                    xmlDoc.Load(filePath);
+                    throw new FileNotFoundException("XML file does not exist.", filePath);
+                }
 
-                    XmlNodeList carNodes = xmlDoc.SelectNodes("//Car");
+                XmlDocument xmlDoc = new XmlDocument();
+                xmlDoc.Load(filePath);
 
-                    foreach (XmlNode carNode in carNodes)
+                XmlNodeList carNodes = xmlDoc.SelectNodes("//Car");
+
+                foreach (XmlNode carNode in carNodes)
+                {
+                    string dateStr = carNode.SelectSingleNode("Date")?.InnerText;
+                    string brandName = carNode.SelectSingleNode("BrandName")?.InnerText;
+                    string priceStr = carNode.SelectSingleNode("Price")?.InnerText;
+
+                    if (string.IsNullOrWhiteSpace(dateStr) || string.IsNullOrWhiteSpace(brandName) || string.IsNullOrWhiteSpace(priceStr))
                     {
-                        string dateStr = carNode.SelectSingleNode("Date").InnerText;
-                        string brandName = carNode.SelectSingleNode("BrandName").InnerText;
-                        string priceStr = carNode.SelectSingleNode("Price").InnerText;
-
-                        records.Add(new CarRecord
-                        {
-                            Date = dateStr,
-                            BrandName = brandName,
-                            Price = priceStr
-                        });
+                        throw new InvalidOperationException("Invalid XML format - missing or empty elements.");
                     }
+
+                    records.Add(new CarRecord
+                    {
+                        Date = dateStr,
+                        BrandName = brandName,
+                        Price = priceStr
+                    });
                 }
-                else
-                {
-                    Console.WriteLine("XML file does not exist.");
-                }
+            }
+            catch (FileNotFoundException ex)
+            {
+                Console.WriteLine("Error reading XML file: " + ex.Message);
+            }
+            catch (InvalidOperationException ex)
+            {
+                Console.WriteLine("Error reading XML file - Invalid XML format: " + ex.Message);
             }
             catch (Exception ex)
             {
