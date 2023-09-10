@@ -27,14 +27,7 @@ namespace Task_Library
 
                     foreach (var carRecord in carRecords)
                     {
-                        if (IsValidCarRecord(carRecord))
-                        {
-                            records.Add(carRecord);
-                        }
-                        else
-                        {
-                            Console.WriteLine($"Invalid car record: Date={carRecord.Date}, BrandName={carRecord.BrandName}, Price={carRecord.Price}");
-                        }
+                        records.Add(carRecord);
                     }
                 }
                 else
@@ -49,30 +42,6 @@ namespace Task_Library
 
             return records;
         }
-
-        private bool IsValidCarRecord(CarRecord carRecord)
-        {
-            // Check if the date is valid (non-zero values for day and month, and valid year).
-            if (carRecord.Date.Day <= 0 || carRecord.Date.Month <= 0 || carRecord.Date.Year <= 0)
-            {
-                return false;
-            }
-
-            // Check if the price is valid (greater than zero).
-            if (carRecord.Price.ToString().StartsWith("-"))
-            {
-                return false;
-            }
-
-            // Check if BrandName is not null and not empty.
-            if (string.IsNullOrEmpty(carRecord.BrandName))
-            {
-                return false;
-            }
-
-            return true;
-        }
-
 
         public void WriteRecords(string filePath, List<ICarRecord> records)
         {
@@ -91,15 +60,14 @@ namespace Task_Library
         public void ConvertAndRename(string sourceFilePath)
         {
             List<ICarRecord> records = ReadRecords(sourceFilePath);
-            List<ICarRecord> validRecords = records.Where(r => r.Price > 0).ToList();
 
-            if (validRecords.Count > 0)
+            if (records.Count > 0)
             {
                 string targetFileName = Path.GetFileNameWithoutExtension(sourceFilePath) + " Converted.xml";
                 string targetFilePath = Path.Combine(Path.GetDirectoryName(sourceFilePath), targetFileName);
 
                 IFileFormatHandler xmlHandler = new XmlFileFormatHandler();
-                xmlHandler.WriteRecords(targetFilePath, validRecords);
+                xmlHandler.WriteRecords(targetFilePath, records);
 
                 Console.WriteLine($"JSON to XML conversion complete. Renamed to: {targetFilePath}");
             }

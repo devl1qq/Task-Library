@@ -23,9 +23,10 @@ class Program
         List<ICarRecord> recordsFromConvertedJson = jsonHandler.ReadRecords(convertedJsonFilePath);
         jsonHandler.DisplayRecords(recordsFromConvertedJson);
 
-        jsonHandler.ConvertAndRename(jsonFilePath);
+        Console.WriteLine("\nConverting JSON to XML...");
+        jsonHandler.ConvertAndRename(convertedJsonFilePath);
 
-        string convertedXmlFilePath = jsonFilePath.Replace(".json", " Converted.xml");
+        string convertedXmlFilePath = convertedJsonFilePath.Replace(".json", " Converted.xml");
         Console.WriteLine("\nRecords from Converted XML:");
         List<ICarRecord> recordsFromConvertedXml = xmlHandler.ReadRecords(convertedXmlFilePath);
         xmlHandler.DisplayRecords(recordsFromConvertedXml);

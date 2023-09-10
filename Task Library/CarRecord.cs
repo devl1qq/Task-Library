@@ -1,9 +1,55 @@
-﻿namespace Task_Library
+﻿
+namespace Task_Library
 {
     public class CarRecord : ICarRecord
     {
-        public DateTime Date { get; set; }
-        public string BrandName { get; set; }
-        public int Price { get; set; }
+        private DateTime _date;
+        private string _brandName;
+        private int _price;
+
+        public string Date
+        {
+            get => _date.ToString("dd.MM.yyyy");
+            set
+            {
+                if (DateTime.TryParseExact(value, "dd.MM.yyyy", null, System.Globalization.DateTimeStyles.None, out DateTime date))
+                {
+                    _date = date;
+                }
+                else
+                {
+                    throw new ArgumentException("Invalid date format.");
+                }
+            }
+        }
+
+        public string BrandName
+        {
+            get => _brandName;
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentException("BrandName cannot be empty.");
+                }
+                _brandName = value;
+            }
+        }
+
+        public string Price
+        {
+            get => _price.ToString();
+            set
+            {
+                if (int.TryParse(value, out int price) && price > 0)
+                {
+                    _price = price;
+                }
+                else
+                {
+                    throw new ArgumentException("Invalid price format or value.");
+                }
+            }
+        }
     }
 }
